@@ -1,12 +1,26 @@
-import React, {JSX} from 'react'
-import styles from './searchBar.module.scss';
+import React, { JSX } from 'react'
+import styles from './searchBar.module.scss'
 
-export default function SearchBar(): JSX.Element {
+interface SearchBarProps {
+    onSearch: (query: string) => void
+}
+
+export default function SearchBar({ onSearch }: SearchBarProps): JSX.Element {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const input = e.currentTarget.querySelector('input') as HTMLInputElement
+        onSearch(input.value)
+    }
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onSearch(e.target.value)
+    }
+
     return (
         <div className={styles.searchBar}>
             <p className={styles.searchBar__main_text}>Filter by keywords</p>
 
-            <form className={styles.searchBar__form}>
+            <form className={styles.searchBar__form} onSubmit={handleSubmit}>
                 <button className={styles.searchBar__form_btn} type="submit">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -15,7 +29,12 @@ export default function SearchBar(): JSX.Element {
                     </svg>
                 </button>
 
-                <input className={styles.searchBar__input} type="text" placeholder='The most successful IT companies in...'/>
+                <input
+                    className={styles.searchBar__input}
+                    type="text"
+                    placeholder='The most successful IT companies in...'
+                    onChange={handleInputChange}
+                />
             </form>
         </div>
     )
