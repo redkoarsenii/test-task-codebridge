@@ -31,7 +31,7 @@ export default function ArticlePage(): JSX.Element {
 
 
             <div className={styles.article__btn_container}>
-                <a href='/' className={styles.article__btn}>Back to homepage</a>
+                <a href='/test-task-codebridge/' className={styles.article__btn}>Back to homepage</a>
             </div>
 
         </section>
