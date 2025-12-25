@@ -3,6 +3,8 @@ import {Article} from "../../types/article";
 import {getArticles} from "../../services/Articles.api";
 import ArticleCard from "../../components/articleCard/ArticleCard";
 import styles from './homePage.module.scss';
+import SearchBar from "../../components/searchBar/SearchBar";
+import ArticleCounter from "../../components/articleCounter/ArticleCounter";
 
 
 export default function HomePage(): JSX.Element {
@@ -17,9 +19,15 @@ export default function HomePage(): JSX.Element {
 
     return (
         <section className={styles.homePage}>
+
+            <SearchBar/>
+
+            <ArticleCounter articlesCount={articles.length}/>
+
             <div className={styles.articlesContainer}>
                 {articles.map(article => (
-                    <ArticleCard title={article.title} summary={article.summary} image_url={article.image_url} id={article.id} published_at={article.published_at} />
+                    <ArticleCard title={article.title} summary={article.summary} image_url={article.image_url}
+                                 id={article.id} published_at={article.published_at}/>
                 ))}
             </div>
         </section>
