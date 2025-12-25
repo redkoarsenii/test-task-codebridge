@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/test-task-codebridge/static/css/main.d2c17f63.css",
+    "main.js": "/test-task-codebridge/static/js/main.dd82293e.js",
+    "index.html": "/test-task-codebridge/index.html",
+    "main.d2c17f63.css.map": "/test-task-codebridge/static/css/main.d2c17f63.css.map",
+    "main.dd82293e.js.map": "/test-task-codebridge/static/js/main.dd82293e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d2c17f63.css",
+    "static/js/main.dd82293e.js"
+  ]
+}
