@@ -2,6 +2,7 @@ import React, {JSX, useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import {Article} from "../../types/article";
 import {getArticleById} from "../../services/Articles.api";
+import styles from './articlePage.module.scss';
 
 export default function ArticlePage(): JSX.Element {
     const { id } = useParams<{ id: string }>()
@@ -16,11 +17,23 @@ export default function ArticlePage(): JSX.Element {
     if (!article) return <div>Завантаження...</div>
 
     return (
-        <div>
-            <h1>{article.title}</h1>
-            {article.image_url && <img src={article.image_url} alt={article.title} />}
-            <p>{article.summary}</p>
-            <p>Опубліковано: {new Date(article.published_at).toLocaleDateString()}</p>
-        </div>
+        <section className={styles.article}>
+
+            <div className={styles.article__image_container}>
+                <img className={styles.article__image} src={article.image_url} alt={article.title} />
+            </div>
+
+            <article className={styles.article__content}>
+                <h1 className={styles.article__content_title}>{article.title}</h1>
+
+                <p className={styles.article__content_summary}>{article.summary}</p>
+            </article>
+
+
+            <div className={styles.article__btn_container}>
+                <a href='/home-page' className={styles.article__btn}>Back to homepage</a>
+            </div>
+
+        </section>
     )
 }
